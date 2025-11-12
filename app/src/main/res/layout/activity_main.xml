@@ -6,21 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name=".model.BlankFragment"
+        android:layout_width="157dp"
+        android:layout_height="212dp">
+
+    </fragment>
+
     <FrameLayout
-        android:id="@+id/layoutMain"
-        android:layout_width="412dp"
-        android:layout_height="665dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:id="@+id/framelayout"
+        android:layout_width="409dp"
+        android:layout_height="667dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
-        <fragment
-            android:id="@+id/fragment_blank"
-            android:name="com.example.tickets.model.BlankFragment"
-            android:layout_width="154dp"
-            android:layout_height="179dp">
-
-        </fragment>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
