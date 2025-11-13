@@ -1,6 +1,10 @@
 package com.example.tickets.model;
 
+import java.util.ArrayList;
+
 public class Ticket {
+
+    private ArrayList <Ticket> BBDDTickets;
     private EstadoTicket estado;
     private String titulo;
     private String descripcion;
@@ -44,4 +48,5 @@ public class Ticket {
         this.descripcion = descripcion;
         this.pasos = pasos;
     }
+
 }

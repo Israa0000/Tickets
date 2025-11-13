@@ -6,20 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <fragment
-        android:id="@+id/fragmentMain"
-        android:name=".model.BlankFragment"
-        android:layout_width="157dp"
-        android:layout_height="212dp">
-
-    </fragment>
-
     <FrameLayout
         android:id="@+id/framelayout"
-        android:layout_width="409dp"
-        android:layout_height="667dp"
+        android:layout_width="275dp"
+        android:layout_height="186dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
     </FrameLayout>
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name=".model.BlankFragment"
+        android:layout_width="410dp"
+        android:layout_height="679dp"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    </fragment>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
