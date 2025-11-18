@@ -19,7 +19,8 @@
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:layout_height="67dp" />
+                android:layout_height="67dp"
+                android:entries="@array/estadoTickets" />
 
             <EditText
                 android:id="@+id/tituloTicket"

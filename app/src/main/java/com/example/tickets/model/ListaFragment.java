@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tickets.R;
+import com.example.tickets.view.MainActivity;
 
 
 public class ListaFragment extends Fragment {
@@ -16,7 +17,11 @@ public class ListaFragment extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onStart() {
+        super.onStart();
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).test();
+        }
 
     }
 
@@ -25,5 +30,6 @@ public class ListaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lista, container, false);
+
     }
 }

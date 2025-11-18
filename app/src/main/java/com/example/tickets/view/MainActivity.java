@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
         btncrearTicket.setOnClickListener(v -> {
+            //fragmentManager.findFragmentById(EditarFragment.class);
             FragmentTransaction writeTransact = fragmentManager.beginTransaction();
-            //writeTransact.replace(R.id.fragmentMain,)
+            //writeTransact.replace(this,R.id.fragmentMain,);
         });
     }
 
