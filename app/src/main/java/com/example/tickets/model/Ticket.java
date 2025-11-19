@@ -59,7 +59,7 @@ public class Ticket {
         this.pasos = pasos;
     }
 
-    public ArrayList<Ticket>getBBDDTickets(ArrayList BBDDTickets){
+    public ArrayList<Ticket>cargarTickets(){
         return BBDDTickets;
     }
 
@@ -67,7 +67,7 @@ public class Ticket {
         BBDDTickets.add(ticket);
     }
 
-    public static void updateTicket(int id, Ticket updatedTicket) {
+    public static void actualizarTickets(int id, Ticket updatedTicket) {
         for (int i = 0; i < BBDDTickets.size(); i++) {
             if (BBDDTickets.get(i).getId() == id) {
                 BBDDTickets.set(i, updatedTicket);
@@ -75,7 +75,7 @@ public class Ticket {
         }
     }
 
-    public static Ticket getTicketById(int id) {
+    public static Ticket ticketPorId(int id) {
         for (Ticket ticket : BBDDTickets) {
             if (ticket.getId() == id) {
                 return ticket;
@@ -93,4 +93,16 @@ public class Ticket {
                 ", pasos='" + pasos.toString() + '\'' +
                 '}';
     }
+
+    public int generarNuevoId(){
+        ArrayList<Ticket> tickets = cargarTickets();
+        int maxId = 0;
+        for(int i = 0; i < tickets.size(); i++){
+            if(tickets.get(i).getId() > maxId){
+                maxId = tickets.get(i).getId();
+            }
+        }
+        return maxId + 1;
+    }
+
 }
