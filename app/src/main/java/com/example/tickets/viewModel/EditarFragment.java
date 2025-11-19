@@ -1,4 +1,4 @@
-package com.example.tickets.model;
+package com.example.tickets.viewModel;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,13 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tickets.R;
+import com.example.tickets.model.EstadoTicket;
+import com.example.tickets.model.Ticket;
 import com.example.tickets.view.MainActivity;
-
-import java.util.ArrayList;
 
 
 public class EditarFragment extends Fragment {

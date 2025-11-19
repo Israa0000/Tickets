@@ -4,12 +4,26 @@ import java.util.ArrayList;
 
 public class Ticket {
 
-    private ArrayList <Ticket> BBDDTickets;
+    private static ArrayList <Ticket> BBDDTickets = new ArrayList<>();
     private int id;
     private EstadoTicket estado;
     private String titulo;
     private String descripcion;
     private String pasos;
+
+    public Ticket(EstadoTicket estado, String titulo, String descripcion, String pasos) {
+        this.estado = estado;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.pasos = pasos;
+    }
+
+    public Ticket (){
+        estado = EstadoTicket.NUEVO;
+        titulo = "";
+        descripcion = "";
+        pasos = "";
+    }
     public int getId(){return id;}
     public void setId(int id){this.id = id;}
 
@@ -49,11 +63,34 @@ public class Ticket {
         return BBDDTickets;
     }
 
-    public Ticket(EstadoTicket estado, String titulo, String descripcion, String pasos) {
-        this.estado = estado;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.pasos = pasos;
+    public void addTicket(Ticket ticket){
+        BBDDTickets.add(ticket);
     }
 
+    public static void updateTicket(int id, Ticket updatedTicket) {
+        for (int i = 0; i < BBDDTickets.size(); i++) {
+            if (BBDDTickets.get(i).getId() == id) {
+                BBDDTickets.set(i, updatedTicket);
+            }
+        }
+    }
+
+    public static Ticket getTicketById(int id) {
+        for (Ticket ticket : BBDDTickets) {
+            if (ticket.getId() == id) {
+                return ticket;
+            }
+        }
+        return null;
+    }
+
+    public String TicketToString(){
+        return "Ticket{" +
+                "id=" + id +
+                ", estado=" + estado.toString() +
+                ", titulo='" + titulo.toString() + '\'' +
+                ", descripcion='" + descripcion.toString() + '\'' +
+                ", pasos='" + pasos.toString() + '\'' +
+                '}';
+    }
 }

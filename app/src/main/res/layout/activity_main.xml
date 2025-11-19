@@ -8,21 +8,44 @@
 
     <FrameLayout
         android:id="@+id/framelayout"
-        android:layout_width="275dp"
-        android:layout_height="186dp"
+        android:layout_width="412dp"
+        android:layout_height="680dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
     </FrameLayout>
 
-    <fragment
-        android:id="@+id/fragmentMain"
-        android:name=".model.BlankFragment"
-        android:layout_width="410dp"
-        android:layout_height="679dp"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="1dp">
 
-    </fragment>
+    <ImageButton
+        android:id="@+id/btnCrearTicket"
+        android:layout_width="80dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ImageButton
+        android:id="@+id/btnVerLista"
+        android:layout_width="81dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <ImageButton
+        android:id="@+id/btnEditarTicket"
+        android:layout_width="92dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
