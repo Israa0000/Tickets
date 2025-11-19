@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditarFragment fragmentMain;
+    EditarFragment editarFragment;
     ListaFragment fragmentLista;
     Button btncrearTicket;
     Button btnVerLista;
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        btncrearTicket.setOnClickListener(v -> crearTicket());
+
 
         tickets = new ArrayList<>();
         tickets.add(new Ticket(EstadoTicket.NUEVO, "Ticket 1", "Descripcion 1","Pasos 1"));
@@ -45,9 +48,18 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    void crearTicket(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.framelayout, editarFragment);
+        transaction.commit();
+    }
+
+
     public ArrayList<Ticket> getTickets() {
         return tickets;
     }
+
     public void test(){
 
     }
