@@ -52,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
     void irCrearTicket(){
+        editarFragment.setTicketActual(null);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.framelayout, editarFragment);

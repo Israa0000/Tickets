@@ -27,6 +27,7 @@ public class EditarFragment extends Fragment {
     Button btnEditarTicket;
 
     private Ticket ticketActual;
+    private boolean esModoEdicion = false;
 
     @Override
     public void onStart() {
@@ -38,25 +39,20 @@ public class EditarFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        //spinner
         mySpinner = (Spinner) rootView.findViewById(R.id.spinner);
         mySpinner.setAdapter(new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, EstadoTicket.values()));
 
-        //campos de texto
         tituloTicket = (EditText) rootView.findViewById(R.id.tituloTicket);
         descripcionTicket = (EditText) rootView.findViewById(R.id.descripcionTicket);
         pasosTicket = (EditText) rootView.findViewById(R.id.pasosTicket);
 
-        //botones y sus funciones
         btnCrearTicket = rootView.findViewById(R.id.crearTicket);
         btnEditarTicket = rootView.findViewById(R.id.btneditarTicket);
 
         btnCrearTicket.setOnClickListener(v -> crearTicket());
         btnEditarTicket.setOnClickListener(v -> {
-
             if (tituloTicket.isEnabled()) {
                 guardarCambios();
             } else {
@@ -65,19 +61,26 @@ public class EditarFragment extends Fragment {
             }
         });
 
-        actualizarVista();
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        actualizarVista();
     }
 
     public void setTicketActual(Ticket ticket) {
         this.ticketActual = ticket;
-        if (tituloTicket != null && descripcionTicket != null && pasosTicket != null) {
+        this.esModoEdicion = (ticket != null);
+
+        if (tituloTicket != null && tituloTicket.getText().toString().isEmpty() && descripcionTicket.getText().toString().isEmpty() && pasosTicket.getText().toString().isEmpty()) {
             actualizarVista();
         }
     }
 
-    void actualizarVista() { //funcion para cuando se crea un ticket o se edita un ticket
-        if (ticketActual == null) {
+    void actualizarVista() {
+        if (!esModoEdicion) {
             limpiarCampos();
             habilitarEdicion(true);
             btnCrearTicket.setVisibility(View.VISIBLE);
@@ -128,21 +131,26 @@ public class EditarFragment extends Fragment {
         if (getActivity() instanceof MainActivity) {
             ((MainActivity) getActivity()).getTickets().add(newTicket);
             Toast.makeText(getContext(), "Ticket Creado", Toast.LENGTH_SHORT).show();
-
+            limpiarCampos();
         }
     }
 
     void guardarCambios() {
-        if (ticketActual != null) {
-            ticketActual.setTitulo(tituloTicket.getText().toString());
-            ticketActual.setDescripcion(descripcionTicket.getText().toString());
-            ticketActual.setPasos(pasosTicket.getText().toString());
+        String nuevoTitulo = tituloTicket.getText().toString();
+        String nuevaDescripcion = descripcionTicket.getText().toString();
+        String nuevosPasos = pasosTicket.getText().toString();
+
+        if (!nuevoTitulo.isEmpty() && !nuevaDescripcion.isEmpty() && !nuevosPasos.isEmpty()) {
+            ticketActual.setTitulo(nuevoTitulo);
+            ticketActual.setDescripcion(nuevaDescripcion);
+            ticketActual.setPasos(nuevosPasos);
             ticketActual.setEstado((EstadoTicket) mySpinner.getSelectedItem());
 
             Toast.makeText(getContext(), "Cambios guardados", Toast.LENGTH_SHORT).show();
             habilitarEdicion(false);
             btnEditarTicket.setText("Editar Ticket");
+        } else {
+            Toast.makeText(getContext(), "Faltan datos", Toast.LENGTH_SHORT).show();
         }
     }
 }
-
