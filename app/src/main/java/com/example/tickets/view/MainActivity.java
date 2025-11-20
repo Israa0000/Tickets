@@ -1,7 +1,6 @@
 package com.example.tickets.view;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     ListaFragment fragmentLista;
     ImageButton btncrearTicket;
     ImageButton btnVerLista;
-    ImageButton btnEditarTicket;
     ArrayList<Ticket> tickets;
 
 
@@ -39,27 +37,42 @@ public class MainActivity extends AppCompatActivity {
         //botones
         btncrearTicket = findViewById(R.id.btnCrearTicket);
         btnVerLista = findViewById(R.id.btnVerLista);
-        btnEditarTicket = findViewById(R.id.btnEditarTicket);
 
-        btncrearTicket.setOnClickListener(v -> crearTicket());
+        btncrearTicket.setOnClickListener(v -> irCrearTicket());
+        btnVerLista.setOnClickListener(v -> irLista());
 
         //ticket de prueba
         tickets = new ArrayList<>();
         tickets.add(new Ticket(EstadoTicket.NUEVO, "Ticket 1", "Descripcion 1","Pasos 1"));
         tickets.add(new Ticket(EstadoTicket.PENDIENTE, "Ticket 2", "Descripcion 2","Pasos 2"));
 
-        fragmentLista = new ListaFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.framelayout, fragmentLista);
         transaction.commit();
     }
 
-    void crearTicket(){
+    void irCrearTicket(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.framelayout, editarFragment);
 
+        transaction.commit();
+    }
+
+    public void EditarTicket(Ticket ticketSeleccionado) {
+        editarFragment.setTicketActual(ticketSeleccionado);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.framelayout, editarFragment);
+        transaction.commit();
+    }
+
+    void irLista(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.framelayout, fragmentLista);
         transaction.commit();
     }
 

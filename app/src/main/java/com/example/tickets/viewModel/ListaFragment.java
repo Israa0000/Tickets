@@ -39,7 +39,6 @@ public class ListaFragment extends Fragment {
     }
 
 
-
     private void agregarItems(ArrayList<Ticket> tickets) {
 
         itemLista.removeAllViews();
@@ -53,6 +52,12 @@ public class ListaFragment extends Fragment {
 
             estadoItem.setText(ticket.getEstado().toString());
             tituloItem.setText(ticket.getTitulo());
+
+            itemView.setOnClickListener(v -> {
+                if(getActivity() instanceof MainActivity){
+                    ((MainActivity) getActivity()).EditarTicket(ticket);
+                }
+            });
 
             itemLista.addView(itemView);
         }

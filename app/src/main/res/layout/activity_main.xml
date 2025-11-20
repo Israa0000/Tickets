@@ -38,14 +38,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
-    <ImageButton
-        android:id="@+id/btnEditarTicket"
-        android:layout_width="92dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
