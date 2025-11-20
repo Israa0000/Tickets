@@ -12,6 +12,7 @@ public class Ticket {
     private String pasos;
 
     public Ticket(EstadoTicket estado, String titulo, String descripcion, String pasos) {
+        this.id = generarNuevoId();
         this.estado = estado;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -19,13 +20,14 @@ public class Ticket {
     }
 
     public Ticket (){
+        this.id = generarNuevoId();
         estado = EstadoTicket.NUEVO;
         titulo = "";
         descripcion = "";
         pasos = "";
     }
     public int getId(){return id;}
-    public void setId(int id){this.id = id;}
+    public void setId(int id){this.id = generarNuevoId();}
 
     public EstadoTicket getEstado() {
         return estado;
