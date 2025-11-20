@@ -2,6 +2,7 @@ package com.example.tickets.view;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditarFragment editarFragment;
     ListaFragment fragmentLista;
-    Button btncrearTicket;
-    Button btnVerLista;
-    Button btnEditarTicket;
+    ImageButton btncrearTicket;
+    ImageButton btnVerLista;
+    ImageButton btnEditarTicket;
     ArrayList<Ticket> tickets;
 
 
@@ -31,15 +32,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        //iniciar los fragments
+        editarFragment = new EditarFragment();
+        fragmentLista = new ListaFragment();
+
+        //botones
+        btncrearTicket = findViewById(R.id.btnCrearTicket);
+        btnVerLista = findViewById(R.id.btnVerLista);
+        btnEditarTicket = findViewById(R.id.btnEditarTicket);
 
         btncrearTicket.setOnClickListener(v -> crearTicket());
 
-
+        //ticket de prueba
         tickets = new ArrayList<>();
         tickets.add(new Ticket(EstadoTicket.NUEVO, "Ticket 1", "Descripcion 1","Pasos 1"));
         tickets.add(new Ticket(EstadoTicket.PENDIENTE, "Ticket 2", "Descripcion 2","Pasos 2"));
-
-        setContentView(R.layout.activity_main);
 
         fragmentLista = new ListaFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.framelayout, editarFragment);
+
         transaction.commit();
     }
 
