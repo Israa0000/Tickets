@@ -79,7 +79,7 @@ public class EditarFragment extends Fragment {
         }
     }
 
-    void actualizarVista() {
+    public void actualizarVista() {
         if (!esModoEdicion) {
             limpiarCampos();
             habilitarEdicion(true);
@@ -94,14 +94,14 @@ public class EditarFragment extends Fragment {
         }
     }
 
-    void habilitarEdicion(boolean habilitar) {
+    public void habilitarEdicion(boolean habilitar) {
         tituloTicket.setEnabled(habilitar);
         descripcionTicket.setEnabled(habilitar);
         pasosTicket.setEnabled(habilitar);
         mySpinner.setEnabled(habilitar);
     }
 
-    void rellenarCampos(Ticket ticket) {
+    public void rellenarCampos(Ticket ticket) {
         tituloTicket.setText(ticket.getTitulo());
         descripcionTicket.setText(ticket.getDescripcion());
         pasosTicket.setText(ticket.getPasos());
@@ -109,14 +109,14 @@ public class EditarFragment extends Fragment {
         mySpinner.setSelection(spinnerPosition);
     }
 
-    void limpiarCampos() {
+    public void limpiarCampos() {
         tituloTicket.setText("");
         descripcionTicket.setText("");
         pasosTicket.setText("");
         mySpinner.setSelection(0);
     }
 
-    void crearTicket() {
+    public void crearTicket() {
         String titulo = tituloTicket.getText().toString();
         String descripcion = descripcionTicket.getText().toString();
         String pasos = pasosTicket.getText().toString();
@@ -135,7 +135,7 @@ public class EditarFragment extends Fragment {
         }
     }
 
-    void guardarCambios() {
+    public void guardarCambios() {
         String nuevoTitulo = tituloTicket.getText().toString();
         String nuevaDescripcion = descripcionTicket.getText().toString();
         String nuevosPasos = pasosTicket.getText().toString();

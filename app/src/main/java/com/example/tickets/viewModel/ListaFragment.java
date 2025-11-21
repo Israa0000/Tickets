@@ -38,7 +38,6 @@ public class ListaFragment extends Fragment {
         }
     }
 
-
     private void agregarItems(ArrayList<Ticket> tickets) {
 
         itemLista.removeAllViews();

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EFEFEF">
 
     <LinearLayout
         android:id="@+id/itemLista"
@@ -16,12 +17,19 @@
             android:id="@+id/estadoItem"
             android:layout_width="189dp"
             android:layout_height="35dp"
-            android:text="estado" />
+            android:background="#D9D7D7"
+            android:text="Estado"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tituloItem"
             android:layout_width="189dp"
             android:layout_height="37dp"
-            android:text="Titulo" />
+            android:background="#DBDADA"
+            android:text="Titulo"
+            android:textSize="20sp"
+            android:textStyle="italic" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

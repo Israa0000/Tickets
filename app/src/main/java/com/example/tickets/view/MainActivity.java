@@ -1,5 +1,7 @@
 package com.example.tickets.view;
 
+import static com.example.tickets.viewModel.GestionTickets.crearArchivo;
+
 import android.os.Bundle;
 import android.widget.ImageButton;
 
@@ -11,9 +13,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tickets.R;
 import com.example.tickets.viewModel.EditarFragment;
 import com.example.tickets.model.EstadoTicket;
+import com.example.tickets.viewModel.GestionTickets;
 import com.example.tickets.viewModel.ListaFragment;
 import com.example.tickets.model.Ticket;
+import com.example.tickets.viewModel.GestionTickets;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        crearArchivo(this);
+
         //iniciar los fragments
         editarFragment = new EditarFragment();
         fragmentLista = new ListaFragment();

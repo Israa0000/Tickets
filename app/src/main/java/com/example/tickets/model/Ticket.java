@@ -1,6 +1,7 @@
 package com.example.tickets.model;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Ticket {
 
@@ -87,13 +88,7 @@ public class Ticket {
     }
 
     public String TicketToString(){
-        return "Ticket{" +
-                "id=" + id +
-                ", estado=" + estado.toString() +
-                ", titulo='" + titulo.toString() + '\'' +
-                ", descripcion='" + descripcion.toString() + '\'' +
-                ", pasos='" + pasos.toString() + '\'' +
-                '}';
+        return id +","+ estado.toString() + "," +titulo.toString() +","+ descripcion.toString()+","+pasos.toString()+ "\n";
     }
 
     public int generarNuevoId(){
