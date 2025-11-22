@@ -20,6 +20,17 @@ public class Ticket {
         this.pasos = pasos;
     }
 
+    // constructor para cargar a la base de datos
+    public Ticket(int id, EstadoTicket estado, String titulo, String descripcion, String pasos) {
+        this.id = id;
+        this.estado = estado;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.pasos = pasos;
+        addTicket(this);
+    }
+
+    // constructor vacio/nulo
     public Ticket (){
         this.id = generarNuevoId();
         estado = EstadoTicket.NUEVO;

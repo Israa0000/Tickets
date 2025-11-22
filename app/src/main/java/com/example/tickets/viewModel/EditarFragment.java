@@ -129,22 +129,34 @@ public class EditarFragment extends Fragment {
 
         Ticket newTicket = new Ticket(estado, titulo, descripcion, pasos);
         if (getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).getTickets().add(newTicket);
+            MainActivity mainActivity = (MainActivity) getActivity();
+            mainActivity.getTickets().add(newTicket);
+
+            // GUARDAR EN ARCHIVO
+            mainActivity.guardarCambios();
+
             Toast.makeText(getContext(), "Ticket Creado", Toast.LENGTH_SHORT).show();
             limpiarCampos();
         }
+
     }
 
     public void guardarCambios() {
-        String nuevoTitulo = tituloTicket.getText().toString();
-        String nuevaDescripcion = descripcionTicket.getText().toString();
-        String nuevosPasos = pasosTicket.getText().toString();
+        String titulo = tituloTicket.getText().toString();
+        String descripcion = descripcionTicket.getText().toString();
+        String pasos = pasosTicket.getText().toString();
+        EstadoTicket estado = (EstadoTicket) mySpinner.getSelectedItem();
 
-        if (!nuevoTitulo.isEmpty() && !nuevaDescripcion.isEmpty() && !nuevosPasos.isEmpty()) {
-            ticketActual.setTitulo(nuevoTitulo);
-            ticketActual.setDescripcion(nuevaDescripcion);
-            ticketActual.setPasos(nuevosPasos);
-            ticketActual.setEstado((EstadoTicket) mySpinner.getSelectedItem());
+        if (!titulo.isEmpty() && !descripcion.isEmpty() && !pasos.isEmpty()) {
+
+            ticketActual.setTitulo(titulo);
+            ticketActual.setDescripcion(descripcion);
+            ticketActual.setPasos(pasos);
+            ticketActual.setEstado(estado);
+
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).guardarCambios();
+            }
 
             Toast.makeText(getContext(), "Cambios guardados", Toast.LENGTH_SHORT).show();
             habilitarEdicion(false);

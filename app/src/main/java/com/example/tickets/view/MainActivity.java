@@ -1,6 +1,6 @@
 package com.example.tickets.view;
 
-import static com.example.tickets.viewModel.GestionTickets.crearArchivo;
+import static com.example.tickets.viewModel.GestionTickets.guardarTickets;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        crearArchivo(this);
 
         //iniciar los fragments
         editarFragment = new EditarFragment();
@@ -50,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnVerLista.setOnClickListener(v -> irLista());
 
         //ticket de prueba
-        tickets = new ArrayList<>();
-        tickets.add(new Ticket(EstadoTicket.NUEVO, "Ticket 1", "Descripcion 1","Pasos 1"));
-        tickets.add(new Ticket(EstadoTicket.PENDIENTE, "Ticket 2", "Descripcion 2","Pasos 2"));
+        tickets = GestionTickets.leerBBDD(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -60,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void guardarCambios() {
+        GestionTickets.guardarTickets(this, tickets);
+    }
 
     void irCrearTicket(){
         editarFragment.setTicketActual(null);
