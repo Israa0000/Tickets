@@ -1,4 +1,4 @@
-package com.example.tickets.viewModel;
+package com.example.tickets.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.tickets.R;
 import com.example.tickets.model.Ticket;
-import com.example.tickets.view.MainActivity;
 
 import java.util.ArrayList;
 

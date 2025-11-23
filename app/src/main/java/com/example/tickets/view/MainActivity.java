@@ -1,7 +1,5 @@
 package com.example.tickets.view;
 
-import static com.example.tickets.viewModel.GestionTickets.guardarTickets;
-
 import android.os.Bundle;
 import android.widget.ImageButton;
 
@@ -11,14 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tickets.R;
-import com.example.tickets.viewModel.EditarFragment;
-import com.example.tickets.model.EstadoTicket;
 import com.example.tickets.viewModel.GestionTickets;
-import com.example.tickets.viewModel.ListaFragment;
 import com.example.tickets.model.Ticket;
-import com.example.tickets.viewModel.GestionTickets;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

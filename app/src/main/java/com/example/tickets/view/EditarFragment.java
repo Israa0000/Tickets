@@ -1,4 +1,4 @@
-package com.example.tickets.viewModel;
+package com.example.tickets.view;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.tickets.R;
 import com.example.tickets.model.EstadoTicket;
 import com.example.tickets.model.Ticket;
-import com.example.tickets.view.MainActivity;
 
 
 public class EditarFragment extends Fragment {
