@@ -1,9 +1,7 @@
 package com.example.tickets.viewModel;
 
 import android.content.Context;
-import android.util.Log;
 
-import android.content.Context;
 import com.example.tickets.model.EstadoTicket;
 import com.example.tickets.model.Ticket;
 
@@ -15,16 +13,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GestionTickets {
-    private static final String NOMBRE_DIRECTORIO = "directorio";
-    private static final String NOMBRE_ARCHIVO = "BBDD.txt";
+    private static final String DIRECTORIO = "directorio";
+    private static final String ARCHIVO = "BBDD.txt";
 
     public static void guardarTickets(Context context, ArrayList<Ticket> tickets) {
-        File directorio = new File(context.getFilesDir(), NOMBRE_DIRECTORIO);
+        File directorio = new File(context.getFilesDir(), DIRECTORIO);
         if (!directorio.exists()) {
             directorio.mkdirs();
         }
 
-        File archivo = new File(directorio, NOMBRE_ARCHIVO);
+        File archivo = new File(directorio, ARCHIVO);
 
         try {
             FileWriter writer = new FileWriter(archivo, false);
@@ -42,8 +40,8 @@ public class GestionTickets {
 
     public static ArrayList<Ticket> leerBBDD(Context context) {
         ArrayList<Ticket> lista = new ArrayList<>();
-        File directorio = new File(context.getFilesDir(), NOMBRE_DIRECTORIO);
-        File archivo = new File(directorio, NOMBRE_ARCHIVO);
+        File directorio = new File(context.getFilesDir(), DIRECTORIO);
+        File archivo = new File(directorio, ARCHIVO);
 
         if (!archivo.exists()) {
             return lista;

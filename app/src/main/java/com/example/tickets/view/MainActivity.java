@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnVerLista.setOnClickListener(v -> irLista());
 
         //ticket de prueba
+
         tickets = GestionTickets.leerBBDD(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
