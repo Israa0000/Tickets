@@ -39,7 +39,6 @@ public class Ticket {
         pasos = "";
     }
     public int getId(){return id;}
-    public void setId(int id){this.id = generarNuevoId();}
 
     public EstadoTicket getEstado() {
         return estado;
@@ -79,23 +78,6 @@ public class Ticket {
 
     public void addTicket(Ticket ticket){
         BBDDTickets.add(ticket);
-    }
-
-    public static void actualizarTickets(int id, Ticket updatedTicket) {
-        for (int i = 0; i < BBDDTickets.size(); i++) {
-            if (BBDDTickets.get(i).getId() == id) {
-                BBDDTickets.set(i, updatedTicket);
-            }
-        }
-    }
-
-    public static Ticket ticketPorId(int id) {
-        for (Ticket ticket : BBDDTickets) {
-            if (ticket.getId() == id) {
-                return ticket;
-            }
-        }
-        return null;
     }
 
     public String TicketToString(){
